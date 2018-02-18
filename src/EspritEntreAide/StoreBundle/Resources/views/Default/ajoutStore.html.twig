@@ -1,0 +1,20 @@
+{% extends ":default:test.html.twig" %}
+
+
+{% block title %}Liste des demandes{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .important { color: #336699; }
+
+    </style>
+{% endblock %}
+{% block content %}
+    <table class="table">
+<h1>Ajout d'un nouveau store</h1>
+    {{ form_start(form) }}
+    <tr>
+
+{{ form_end(form) }}
+    <table class="table">
+{% endblock %}

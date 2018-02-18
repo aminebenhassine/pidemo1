@@ -1,0 +1,357 @@
+
+<div id="sidebar" class="sidebar responsive ace-save-state">
+	<script type="text/javascript">
+        try{ace.settings.loadState('sidebar')}catch(e){}
+	</script>
+
+	<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+		<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+			<button class="btn btn-success">
+				<i class="ace-icon fa fa-signal"></i>
+			</button>
+
+			<button class="btn btn-info">
+				<i class="ace-icon fa fa-pencil"></i>
+			</button>
+
+			<button class="btn btn-warning">
+				<i class="ace-icon fa fa-users"></i>
+			</button>
+
+			<button class="btn btn-danger">
+				<i class="ace-icon fa fa-cogs"></i>
+			</button>
+		</div>
+
+		<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+			<span class="btn btn-success"></span>
+
+			<span class="btn btn-info"></span>
+
+			<span class="btn btn-warning"></span>
+
+			<span class="btn btn-danger"></span>
+		</div>
+	</div><!-- /.sidebar-shortcuts -->
+
+	<ul class="nav nav-list">
+		<li class="active">
+			<a href="index.html">
+				<i class="menu-icon fa fa-tachometer"></i>
+				<span class="menu-text"> Tableau de bord  </span>
+			</a>
+
+			<b class="arrow"></b>
+		</li>
+
+
+		<li class="">
+			<a href="#" class="dropdown-toggle">
+				<i class="menu-icon fa fa-tag"></i>
+				<span class="menu-text"> Gestion annonces </span><!--*********************************************************************-->
+
+				<b class="arrow fa fa-angle-down"></b>
+			</a>
+
+			<b class="arrow"></b>
+
+			<ul class="submenu">
+				<li class="">                               <!--*******************ajout annonce**************************-->
+					<a href="{{ path('_annonce_ajouter') }}">
+						<i class="menu-icon fa fa-caret-right"></i>
+						ajout annonce
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+
+
+				<li class="">
+					<a href="{{ path('_affiche') }}">    <!--*******************affichage annonce**************************-->
+						<i class="menu-icon fa fa-caret-right"></i>
+						liste annonce
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="{{ path('_annonce_chercher') }}">    <!--*******************recherche annonce**************************-->
+						<i class="menu-icon fa fa-caret-right"></i>
+						recherche annonce
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+
+			</ul>
+		</li>
+
+
+		<li class="">
+			<a href="#" class="dropdown-toggle">
+				<i class="menu-icon fa fa-tag"></i>
+				<span class="menu-text"> Gestion Clubs </span><!--*********************************************************************-->
+
+				<b class="arrow fa fa-angle-down"></b>
+			</a>
+
+			<b class="arrow"></b>
+
+			<ul class="submenu">
+				<li class="">                               <!--*******************ajout club**************************-->
+					<a href="{{ path('club_ajout') }}">
+						<i class="menu-icon fa fa-caret-right"></i>
+						Ajout Club
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+
+
+				<li class="">
+					<a href="{{ path('club_affiche') }}">    <!--*******************affichage club**************************-->
+						<i class="menu-icon fa fa-caret-right"></i>
+						List Club
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="{{ path('club_affiche') }}">    <!--*******************recherche club**************************-->
+						<i class="menu-icon fa fa-caret-right"></i>
+						recherche club
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+			</ul>
+		</li>
+
+
+
+		<li class="">
+			<a href="#" class="dropdown-toggle">
+				<i class="menu-icon fa fa-tag"></i>
+				<span class="menu-text"> Gestion Evénements </span><!--*********************************************************************-->
+
+				<b class="arrow fa fa-angle-down"></b>
+			</a>
+
+			<b class="arrow"></b>
+
+			<ul class="submenu">
+				<li class="">                               <!--*******************ajout Evénement**************************-->
+					<a href="{{ path('_ajouter_events') }}">
+						<i class="menu-icon fa fa-caret-right"></i>
+						ajout Evénement
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+
+
+				<li class="">
+					<a href="{{ path('_afficher_events') }}">    <!--*******************affichage Evénement**************************-->
+						<i class="menu-icon fa fa-caret-right"></i>
+						Liste des Evénement
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="{{ path('_rechercher_events_club') }}">    <!--*******************recherche Evénement**************************-->
+						<i class="menu-icon fa fa-caret-right"></i>
+						recherche Evénement
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+			</ul>
+		</li>
+
+		<li class="">
+			<a href="#" class="dropdown-toggle">
+				<i class="menu-icon fa fa-tag"></i>
+				<span class="menu-text"> Gestion photocopies </span><!--*********************************************************************-->
+
+				<b class="arrow fa fa-angle-down"></b>
+			</a>
+
+			<b class="arrow"></b>
+
+			<ul class="submenu">
+				<li class="">                               <!--*******************ajout photocopie**************************-->
+					<a href="{{ path('club_ajout') }}">
+						<i class="menu-icon fa fa-caret-right"></i>
+						ajout photocopie
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+
+
+				<li class="">
+					<a href="{{ path('club_affiche') }}">    <!--*******************affichage photocopie**************************-->
+						<i class="menu-icon fa fa-caret-right"></i>
+						List photocopie
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="{{ path('club_affiche') }}">    <!--*******************recherche photocopie**************************-->
+						<i class="menu-icon fa fa-caret-right"></i>
+						recherche photocopie
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+			</ul>
+		</li>
+
+		<li class="">
+			<a href="#" class="dropdown-toggle">
+				<i class="menu-icon fa fa-tag"></i>
+				<span class="menu-text"> Gestion SPOTTED </span><!--*********************************************************************-->
+
+				<b class="arrow fa fa-angle-down"></b>
+			</a>
+
+			<b class="arrow"></b>
+
+			<ul class="submenu">
+				<li class="">                               <!--*******************ajout SPOTTED**************************-->
+					<a href="{{ path('club_ajout') }}">
+						<i class="menu-icon fa fa-caret-right"></i>
+						ajout SPOTTED
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+
+
+				<li class="">
+					<a href="{{ path('club_affiche') }}">    <!--*******************affichage SPOTTED**************************-->
+						<i class="menu-icon fa fa-caret-right"></i>
+						List SPOTTED
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="{{ path('club_affiche') }}">    <!--*******************recherche SPOTTED**************************-->
+						<i class="menu-icon fa fa-caret-right"></i>
+						recherche SPOTTED
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+			</ul>
+		</li>
+
+
+
+		<li class="">
+			<a href="#" class="dropdown-toggle">
+				<i class="menu-icon fa fa-tag"></i>
+				<span class="menu-text"> More Pages </span>
+
+				<b class="arrow fa fa-angle-down"></b>
+			</a>
+
+			<b class="arrow"></b>
+
+			<ul class="submenu">
+				<li class="">
+					<a href="profile.html">
+						<i class="menu-icon fa fa-caret-right"></i>
+						User Profile
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="inbox.html">
+						<i class="menu-icon fa fa-caret-right"></i>
+						Inbox
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="pricing.html">
+						<i class="menu-icon fa fa-caret-right"></i>
+						Pricing Tables
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="invoice.html">
+						<i class="menu-icon fa fa-caret-right"></i>
+						Invoice
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="timeline.html">
+						<i class="menu-icon fa fa-caret-right"></i>
+						Timeline
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="search.html">
+						<i class="menu-icon fa fa-caret-right"></i>
+						Search Results
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="email.html">
+						<i class="menu-icon fa fa-caret-right"></i>
+						Email Templates
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="login.html">
+						<i class="menu-icon fa fa-caret-right"></i>
+						Login &amp; Register
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+			</ul>
+		</li>
+
+	</ul><!-- /.nav-list -->
+
+	<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+		<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+	</div>
+</div>

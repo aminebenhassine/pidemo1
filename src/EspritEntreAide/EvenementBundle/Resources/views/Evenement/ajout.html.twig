@@ -1,0 +1,89 @@
+{% extends ":default:test.html.twig" %}
+
+
+{% block title %}Evenements{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .important { color: #336699; }
+
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="big-div">
+        <h1>Ajouter un évènement</h1>
+    </div>
+    <div>
+        <center>
+            {% if is_granted('ROLE_RESPONSABLE_SUPER_ADMIN')
+            or is_granted('ROLE_ADMIN')
+            or is_granted('ROLE_RESPONSABLE_CLUB')
+            or is_granted('ROLE_SUPER_ADMIN')
+             %}
+                {{ form_start(form) }}
+                <table class="table">
+                    <tr>
+                        <th> Titre </th>
+                        <td>{{ form_widget(form.titreE) }}</td>
+                    </tr>
+                    <tr>
+                        <th> Description </th>
+                        <td>{{ form_widget(form.descE) }}</td>
+                    </tr>
+                    <tr>
+                        <th> Date </th>
+                        <td>{{ form_widget(form.dateE) }}</td>
+                    </tr>
+                    <tr>
+                        <th> Type </th>
+                        <td>{{ form_widget(form.typeE) }}</td>
+                    </tr>
+                    <tr>
+                        <th> Club Organisateur </th>
+                        <td>{{ form_widget(form.idClub) }}</td>
+                    </tr>
+                    <tr>
+                        <th> Image JPEG </th>
+                        <td>{{ form_row(form.image) }}</td>
+                    </tr>
+                </table>
+                {{ form_end(form) }}
+
+            {% elseif  is_granted('ROLE_ENSEIGNANT')
+            or is_granted('ROLE_ETUDIANT') %}
+                {{ form_start(form) }}
+                <table class="table">
+                    <tr>
+                        <th> Titre </th>
+                        <td>{{ form_widget(form.titreE) }}</td>
+                    </tr>
+                    <tr>
+                        <th> Description </th>
+                        <td>{{ form_widget(form.descE) }}</td>
+                    </tr>
+                    <tr>
+                        <th> Date </th>
+                        <td>{{ form_widget(form.dateE) }}</td>
+                    </tr>
+                    <tr>
+                        <th> Type </th>
+                        <td>{{ form_widget(form.typeE) }}</td>
+                    </tr>
+                    <tr>
+                        <th> Image JPEG </th>
+                        <td>{{ form_row(form.image) }}</td>
+                    </tr>
+                </table>
+                {{ form_end(form) }}
+
+                {% else %}
+                <br>
+                <b style="color: #dd4444">Vous ne pouvez pas ajouter d'evenements, merci de contacter votre administrateur systeme ou de s'inscrire</b>
+            {% endif %}
+        </center>
+    </div>
+
+    <p class="important">
+
+    </p>
+{% endblock %}

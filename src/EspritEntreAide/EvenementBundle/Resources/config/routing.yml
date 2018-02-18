@@ -1,0 +1,51 @@
+evenement_homepage:
+    path:     /
+    defaults: { _controller: EvenementBundle:Default:index }
+
+
+_afficher_events:
+    path:     /afficherevent
+    defaults: { _controller: EvenementBundle:Evenement:afficher }
+
+_ajouter_events:
+    path:     /ajouterevent
+    defaults: { _controller: EvenementBundle:Evenement:ajout }
+
+_supprimer_events:
+    path:     /supprimerevent
+    defaults: { _controller: EvenementBundle:Evenement:supprimer }
+
+_modifier_events:
+    path:     /modifierevent
+    defaults: { _controller: EvenementBundle:Evenement:modifier }
+
+
+_rechercher_events_club:
+    path:     /recherchereventclub
+    defaults: { _controller: EvenementBundle:Evenement:rechercheClub }
+
+_rechercher_events_date:
+    path:     /recherchereventdate
+    defaults: { _controller: EvenementBundle:Evenement:rechercheDate }
+_rechercher_events_nom:
+    path:     /recherchereventnom
+    defaults: { _controller: EvenementBundle:Evenement:rechercheNom }
+_traiter_prop_events:
+    path:     /traiterpropevent
+    defaults: { _controller: EvenementBundle:Evenement:traiterPropositionsEvt }
+_accepter_prop_events:
+    path:     /accepterprop
+    defaults: { _controller: EvenementBundle:Evenement:accepterPropositionsEvt }
+_refuser_prop_events:
+    path:     /refuserprop
+    defaults: { _controller: EvenementBundle:Evenement:refuserPropositionsEvt }
+_participer_events:
+    path:     /participerevent
+    defaults: { _controller: EvenementBundle:Evenement:participerEvent }
+_afficher_tri_events:
+    path:     /affichertrievent
+    defaults: { _controller: EvenementBundle:Evenement:afficherTri }
+
+_afficher_un_event:
+    path:     /afficherunevent
+    defaults: { _controller: EvenementBundle:Evenement:afficherUnEvent }

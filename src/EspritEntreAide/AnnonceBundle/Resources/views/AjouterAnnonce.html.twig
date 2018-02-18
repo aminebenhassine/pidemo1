@@ -1,0 +1,31 @@
+{% extends ":default:test.html.twig" %}
+
+
+{% block title %}Annonce{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .important { color: #336699; }
+
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="big-div-club">
+        <div class="col-md-8 middlebarmenu">
+            <ul class="snip1189">
+                <li><a href="{{ path('annonce_homepage') }}">revenir a la liste des annonces</a></li>
+            </ul>
+        </div>
+    </div><br>
+    <!--<p class="important"></p>-->
+    <div class="ajouter annonce">
+        <fieldset>
+            <h1>Ajouter Annonce</h1>
+            {{ form_start(form) }}
+
+            {{ form_end(form) }}
+        </fieldset>
+        <span style="alignment: right"></span>
+    </div>
+
+{% endblock %}

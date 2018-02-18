@@ -1,0 +1,40 @@
+{% extends ":default:test.html.twig" %} {% block title %}Club{% endblock %} {% block head %} {{ parent() }}
+    <style type="text/css">
+        .important { color: #336699; }
+
+    </style>{% endblock %} {% block content %}
+    <div class="big-div-club">
+        <h1><b>Interface club</b></h1>
+    </div>
+    <center>
+
+        {% if (is_granted('ROLE_RESPONSABLE_SUPER_ADMIN'))or(is_granted('ROLE_SUPER_ADMIN'))or(is_granted('ROLE_ADMIN')) %}
+        <h1>Que voulez-vous faire?</h1><br>
+        <ul>
+            <li>
+                <a href="{{path('club_ajout')}}">Ajouter un club</a>
+            </li>
+            <li>
+                <a href="{{ path('club_affiche')}}">Gerer un club</a>
+            </li>
+
+            <li style="list-style: none">
+
+
+
+                {% elseif(is_granted('ROLE_RESPONSABLE_CLUB'))  or(is_granted('ROLE_ETUDIANT')) or(is_granted('ROLE_ENSEIGNANT'))  %}</li>
+            <h1>Que voulez-vous faire?</h1><br>
+            <li>
+                <a href="{{path('club_recherche')}}">Rechercher un club</a>
+            </li>
+            <li style="list-style: none">
+
+                {% else %}
+                    <center>
+                <p>Pour continuer vous devez vous connecter avec vos identifiants...</p>
+                    </center>
+                        {% endif %}
+            </li>
+        </ul>
+    </center>
+    <p class="important"></p>{% endblock %}

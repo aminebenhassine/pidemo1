@@ -1,0 +1,64 @@
+<center><h1>Search and find 0 78</h1>
+    {{ form(Form) }}
+    <script src="{{  asset('jquery-3.2.1.min.js') }}"></script>
+
+    <script type="text/javascript">
+        $(function(){
+            $("#espritentreaide_spottedbundle_publication_titreP").keyup(
+                function(){
+                    abcd =  $("#espritentreaide_spottedbundle_publication_titreP").val();
+                    DATA = 's='+abcd;
+                    //alert(abcd);
+                    $.ajax({
+                        url : '{{ path("_recherche_spotted") }}',
+                        data:DATA,
+                        success : function(response){
+                            $("#a5").html(
+                                "<table id='tab' border='1'>" +
+                                "        <tr>\n" +
+                                "            <th> Id </th>\n" +
+
+
+                                "\n" +
+                                "</tr>" +
+                                "" +
+                                "</table>"
+                            );
+                            $.each(response,function(k,el){
+
+                                $('#tab').append(
+                                    "<tr>" +
+                                    "<td>"+el.id+"</td>"+
+
+                                    "</tr>"
+                                )
+                            })
+
+
+                        },
+                    })
+                }
+
+            );
+        });
+    </script>
+    <div id="a5" ></div>
+    <h2>List</h2>
+    <table border="2">
+        <tr>
+            <th> Titre </th>
+            <th> Description </th>
+
+
+        </tr>
+        {% for voiture in voitures %}
+            <tr>
+                <td>{{ voiture.titreP }}</td>
+                <td>{{ voiture.descP }}</td>
+
+
+            </tr>
+        {% endfor %}
+    </table>
+
+</center>

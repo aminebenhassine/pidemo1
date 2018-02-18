@@ -1,0 +1,26 @@
+store_homepage:
+    path:     /storeIndex
+    defaults: { _controller: StoreBundle:Default:index }
+store_ajout:
+    path:     /ajoutstore
+    defaults: { _controller: StoreBundle:Default:AjoutStore }
+store_edit:
+    path:     /{id}/storeEdit
+    defaults: { _controller: StoreBundle:Default:edit }
+store_remove:
+    path:     /{id}/storeRemove
+    defaults: { _controller: StoreBundle:Default:remove }
+
+
+demande_index:
+    path:     /demandeIndex
+    defaults: { _controller: StoreBundle:Demande:index }
+demande_new:
+    path:     /demandeNew
+    defaults: { _controller: StoreBundle:Demande:new }
+demande_remove:
+    path:     /{id}/demandeRemove
+    defaults: { _controller: StoreBundle:Demande:remove }
+
+
+

@@ -1,0 +1,45 @@
+app:
+    path:     /
+    defaults: { _controller: AppBundle:Default:index }
+
+_spotted_bundle:
+    resource: "@SpottedBundle/Resources/config/routing.yml"
+    prefix:   /spotted_a
+
+_annonces_bundle:
+    resource: "@AnnonceBundle/Resources/config/routing.yml"
+    prefix:   /Annonces_a
+
+
+
+_events_bundle:
+    resource: "@EvenementBundle/Resources/config/routing.yml"
+    prefix:   /Events_a
+
+_events_bundle_admin:
+    resource: "@EvenementBundle/Resources/config/routingadmin.yml"
+    prefix:   /account/admin/events
+
+_clubs_bundle:
+    resource: "@ClubBundle/Resources/config/routing.yml"
+    prefix:   /Clubs_a
+
+
+
+_store_bundle:
+    resource: "@StoreBundle/Resources/config/routing.yml"
+    prefix:   /store_a
+
+
+_user_bundle:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /account
+
+
+
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

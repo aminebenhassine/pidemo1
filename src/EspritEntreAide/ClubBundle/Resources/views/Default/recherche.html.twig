@@ -1,0 +1,86 @@
+
+{% extends ":default:test.html.twig" %}
+
+
+{% block title %}Club{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .important { color: #336699; }
+
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="big-div-club">
+        <h1>Interface club</h1>
+    </div>
+    <center>
+
+        <h1>Recherche club par nom</h1>
+        {{ form (form) }}
+        <h1>Liste des Club</h1>
+    </center>
+    <center>
+        <table table width="60%" height="20%" border="2" align="center">
+            <tr>
+                <th>ID club</th>
+                <th>nom club</th>
+                <th>mail club</th>
+                <th>date creation</th>
+                <th>Responsable club</th>
+                <th>description club</th>
+                <th>photo club</th>
+            </tr>
+
+            {% for c in club %}
+
+                <tr>
+                    <td>{{ c.id }}</td>
+                    <td>{{ c.nomC}}</td>
+                    <td>{{ c.mailC}}</td>
+                    <td>{{ c.dateCreation |date}}</td>
+                    <td>{{ c.idUser}}</td>
+                    <td>{{ c.descC}}</td>
+                    <td> <img src= " {{ asset ('uploads/images/' ~ c.image) }}"  width="15%"!imp  height="15%" ></td>
+                    {% if(is_granted('ROLE_ETUDIANT')) or (is_granted('ROLE_ENSEIGNANT') ) %}
+                        <td> <input type="button" value="Abonne-toi!!"></td>
+                    {% endif %}
+
+
+
+
+                    {% if (is_granted('ROLE_RESPONSABLE_SUPER_ADMIN'))
+                    or(is_granted('ROLE_SUPER_ADMIN'))
+                    or(is_granted('ROLE_ADMIN'))
+                    %}
+
+                        <td><a href="{{ path('club_supprime',{'id':c.id}) }}">Supprimer</a></td>
+                        <td><a href="{{ path('_club_modifier',{'id':c.id}) }}">Modifier</a></td>
+                    {% endif %}
+
+                    {% if(is_granted('ROLE_RESPONSABLE_CLUB'))
+                    %}
+                        <td><a href="{{ path('_club_modifier',{'id':c.id}) }}">Modifier</a></td>
+                    {% endif %}
+
+
+
+
+
+
+
+                </tr>
+            {% endfor %}
+        </table>
+    </center>
+
+
+
+
+
+
+    <p class="important">
+
+    </p>
+{% endblock %}
+

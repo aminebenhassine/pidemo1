@@ -1,0 +1,40 @@
+<h1>Liste des annonces</h1>
+
+<table border="1">
+    <tr>
+        <th>id</th>
+        <th>categorie</th>
+        <th>titre</th>
+        <th>user</th>
+        <th>numero de telephone</th>
+        <th>Description</th>
+        <th>date de creation</th>
+
+
+
+
+
+
+
+
+
+
+    </tr>
+    {% for a in evts %}
+        <tr>
+            <td>{{ a.id}}</td>
+            <td>{{ a.categorieA}}</td>
+            <td>{{ a.titreA}}</td>
+            <td>{{ a.idUser}}</td>
+            <td>{{ a.numTel}}</td>
+            <td>{{ a.descA}}</td>
+            <td>{{ a.dateA|date}}</td>
+
+
+
+
+
+
+        </tr>
+    {% endfor %}
+</table>

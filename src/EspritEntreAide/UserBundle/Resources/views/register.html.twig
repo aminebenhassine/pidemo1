@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+
+    <link rel="stylesheet" href="{{ asset('css/style_login.css') }}">
+
+</head>
+
+<body>
+
+<div id="particles-js"></div>
+<body class="login">
+<div class="container">
+    <div class="login-container-wrapper clearfix">
+        <div class="logo">
+            <i class="fa fa-sign-in"></i>
+        </div>
+        <div class="welcome"><strong>Welcome,</strong> please Sign-up</div>
+
+        {% block fos_user_content %}{% endblock %}
+
+    </div>
+
+
+</div>
+
+</body>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js'></script>
+
+
+
+<script  src="{{ asset('js/index_login.js') }}"></script>
+
+
+
+
+</body>
+
+</html>

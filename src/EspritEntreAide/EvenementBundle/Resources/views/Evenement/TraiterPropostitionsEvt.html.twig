@@ -1,0 +1,47 @@
+{% extends ":default:test.html.twig" %}
+
+
+{% block title %}Evenements{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .important { color: #336699; }
+
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="big-div">
+        <h1>Liste des propositions d'évènements</h1>
+    </div>
+    <center>
+        <table border="2">
+            <tr>
+                <th> Image </th>
+                <th> Titre </th>
+                <th> Description </th>
+                <th> Date </th>
+                <th> Type </th>
+                <th> Nom </th>
+                <th> Prénom </th>
+                <th> Statut </th>
+            </tr>
+            {% for evt in evts %}
+                <tr>
+                    <td> <img src="{{ asset('uploads/images/' ~ evt.image) }}" height="100px" width="250px"> </td>
+                    <td>{{ evt.titreE }}</td>
+                    <td>{{ evt.descE }}</td>
+                    <td>{{ evt.dateE | date('d-m-y H:i') }}</td>
+                    <td>{{ evt.typeE }}</td>
+                    <td>{{ evt.idUser.nom  }}</td>
+                    <td>{{ evt.idUser.prenom  }}</td>
+                    <td>{{ evt.usrRole }}</td>
+                    <td><A HREF="{{ path('_refuser_prop_events',{'id': evt.id }) }}" > Refuser </A></td>
+                    <td><A HREF="{{ path('_accepter_prop_events',{'id':evt.id }) }}" > Accepter </A></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </center>
+    <p class="important">
+
+    </p>
+{% endblock %}

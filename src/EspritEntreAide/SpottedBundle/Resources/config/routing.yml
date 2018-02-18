@@ -1,0 +1,48 @@
+spotted_homepage:
+    path:     /
+    defaults: { _controller: SpottedBundle:Default:index }
+
+
+_spotted_test:
+    path:     /spottedtest
+    defaults: { _controller: SpottedBundle:Default:index }
+
+_ajout_spotted:
+    path:     /ajout_spotted
+    defaults: { _controller: SpottedBundle:Default:ajout }
+
+
+_list_spotted:
+    path:     /list
+    defaults: { _controller: SpottedBundle:Default:listSpotted }
+
+_modifier_spotted:
+    path: /modif/{id}
+    defaults: { _controller: SpottedBundle:Default:modifSpotted }
+
+_delete_spotted:
+    path: /supprimer/{id}
+    defaults: { _controller: SpottedBundle:Default:deleteSpotted }
+
+
+_spotted_content:
+    path:     /content/{id}
+    defaults: { _controller: SpottedBundle:Default:contentSpotted }
+
+_edit_comment_spotted:
+    path:     /editcomment/{id}
+    defaults: { _controller: SpottedBundle:Default:editCommentSpotted }
+
+_delete_comment_spotted:
+    path:     /deletecomment/{id}
+    defaults: { _controller: SpottedBundle:Default:deleteCommentSpotted }
+
+_recherche_spotted:
+    path:     /recherchespotted
+    defaults: { _controller: SpottedBundle:Default:Recherche }
+
+
+_test_id:
+    path:     /test_id
+    defaults: { _controller: SpottedBundle:Default:foo }
+

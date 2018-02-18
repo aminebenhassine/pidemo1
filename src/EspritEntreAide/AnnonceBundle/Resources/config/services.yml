@@ -1,0 +1,4 @@
+services:
+#    annonce.example:
+#        class: EspritEntreAide\AnnonceBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

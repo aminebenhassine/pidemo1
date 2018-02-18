@@ -1,0 +1,161 @@
+{% extends ":default:test.html.twig" %}
+
+
+{% block title %}Evenements{% endblock %}
+{% block head %}
+    <style>
+        body {
+            background: #f2f2f2;
+        }
+
+        #feed {
+            position: relative;
+            width: 400px;
+            margin: 0 auto;
+            display: table;
+        }
+        #feed .item {
+            position: relative;
+            width: 100%;
+            margin: 9px auto;
+            border-radius: 3px;
+            background: #fff;
+            overflow: hidden;
+            -webkit-box-shadow: 0 0 0 1px #e6e6e6;
+            box-shadow: 0 0 0 1px #e6e6e6;
+        }
+        #feed .item .header-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            clip: rect(0, auto, auto, 0);
+        }
+        #feed .item .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: #fff;
+            z-index: 1;
+            -webkit-box-shadow: 0 1px #e6e6e6;
+            box-shadow: 0 1px #e6e6e6;
+        }
+        #feed .item .header .avatar {
+            cursor: pointer;
+            float: left;
+            width: 30px;
+            height: 30px;
+            margin: 10px;
+            border-radius: 99em;
+            background: #32a0f5;
+        }
+        #feed .item .header .username {
+            cursor: pointer;
+            float: left;
+            width: 100px;
+            height: 10px;
+            margin: 20px 20px 20px 0;
+            border-radius: 3px;
+            background: #e6e6e6;
+        }
+        #feed .item .photo {
+            position: relative;
+            width: 400px;
+            margin: 50px auto 0;
+            background: #dceffd;
+        }
+        #feed .item .content {
+            position: relative;
+            padding: 10px;
+            display: table;
+        }
+        #feed .item .content .likes {
+            cursor: pointer;
+            width: 50px;
+            height: 10px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+            background: #32a0f5;
+        }
+        #feed .item .content .comments li {
+            margin: 5px 0 0;
+            display: block;
+        }
+        #feed .item .content .comments li .name {
+            cursor: pointer;
+            width: 75px;
+            height: 10px;
+            max-width: 100%;
+            margin-right: 5px;
+            border-radius: 3px;
+            background: #32a0f5;
+            display: inline-block;
+        }
+        #feed .item .content .comments li .comment {
+            width: 250px;
+            height: 10px;
+            max-width: 100%;
+            border-radius: 3px;
+            background: #e6e6e6;
+            display: inline-block;
+        }
+
+
+    </style>
+    {{ parent() }}
+    <style type="text/css">
+        .important { color: #336699; }
+
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="big-div">
+        <h1>Liste spotted publication</h1>
+    </div>
+    <br>
+    <center>
+        {% for m in listspotted %}
+
+
+        <div id='feed'>
+
+            <div class='item'>
+                <div class='header-container'>
+                    <div class='header'>
+                        <div class='avatar'></div>
+                        <div class='username'></div>
+                    </div>
+                </div>
+                <div class='photo'>
+                    <img src="{{ asset('uploads/images/' ~ m.image) }}"/>
+                </div>
+                <div class='content'>
+                    {{ m.descP }}
+                    <ul class='comments00'>
+                        <li>
+                            <div class='comment0'>
+                                <a href="{{ path('_spotted_content',{'id':m.id}) }}">lire la suite</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            {% endfor %}
+
+        </div>
+        </div>
+
+
+
+
+
+    </center>
+    <p class="important">
+
+    </p>
+{% endblock %}
+

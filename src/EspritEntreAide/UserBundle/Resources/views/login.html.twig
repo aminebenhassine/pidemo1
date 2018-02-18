@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+
+    <link rel="stylesheet" href="{{ asset('css/style_login.css') }}">
+
+</head>
+
+<body>
+
+<div id="particles-js"></div>
+<body class="login">
+<div class="container">
+    <div class="login-container-wrapper clearfix">
+        <div class="logo">
+            <i class="fa fa-sign-in"></i>
+        </div>
+        <div class="welcome"><strong>Welcome,</strong> please login</div>
+
+        <form class="form-horizontal login-form" action="{{ path("fos_user_security_check") }}" method="post">
+
+            {% if csrf_token %}
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            {% endif %}
+
+            <div class="form-group relative">
+                <input placeholder="Username" type="text" id="login_username" class="form-control input-lg" name="_username" value="{{ last_username }}" autocomplete="username" required/>
+
+                <i class="fa fa-user"></i>
+            </div>
+            <div class="form-group relative password">
+
+
+                <input placeholder="Password" type="password" id="login_password" class="form-control input-lg" name="_password" required="required" autocomplete="current-password" />
+
+
+
+                <i class="fa fa-lock"></i>
+            </div>
+
+            <div class="form-group">
+                {% if error %}
+                    <div style="color: #980b0b !important;">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <button type="submit" id="_submit" name="_submit"  class="btn btn-success btn-lg btn-block" value="{{ 'security.login.submit'|trans }}" >Login</button>
+
+            </div>
+            <div class="checkbox pull-left">
+                <label>
+
+                    <input id="remember_me" name="_remember_me" value="on"  type="checkbox"> Remember</label>
+            </div>
+            <div class="checkbox pull-right">
+                <label> <a class="forget" href="#" title="forget">Forgot your password</a> </label>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+</body>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js'></script>
+
+
+
+<script  src="{{ asset('js/index_login.js') }}"></script>
+
+
+
+
+</body>
+
+</html>

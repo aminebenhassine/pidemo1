@@ -1,0 +1,78 @@
+{% extends ":default:test.html.twig" %}
+
+
+{% block title %}Club{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .important { color: #336699; }
+
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="big-div-club">
+        <h1>Modifier un club</h1>
+    </div>
+    <center>
+        <fieldset>
+            {% if is_granted('ROLE_RESPONSABLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN')or is_granted('ROLE_RESPONSABLE_CLUB') or is_granted('ROLE_SUPER_ADMIN') %}
+
+                <table>
+                    <tr>
+                        {{ form_start(form) }}
+                    <tr>
+                        <td>Nom de club:</td>
+                        <td>{{ form_widget(form.nomC) }} </td>
+                    </tr>
+
+                    <tr>
+                        <td>Mail de club:</td>
+                        <td>{{ form_widget(form.mailC) }} </td>
+                    </tr>
+
+                    <tr>
+                        <td>Responsable de club :</td>
+                        <td>{{ form_widget(form.idUser) }} </td>
+                    </tr>
+
+                    <tr>
+                        <td>Description  de club :</td>
+                        <td>{{ form_widget(form.descC) }} </td>
+                    </tr>
+
+                    <tr>
+                        <td>Date de Creation de club :</td>
+                        <td>{{ form_widget(form.dateCreation) }} </td>
+                    </tr>
+
+                    <tr>
+                        <td>Photo de club :</td>
+                        <td>{{ form_widget(form.image) }} </td>
+                    </tr>
+
+
+
+
+                    <tr>
+                        <td>Valider votre Modification :</td>
+                        <td>{{ form_widget(form.Ajouter) }} </td>
+                    </tr>
+
+
+                    {{ form_end(form) }}
+                    </tr>
+                </table>
+            {% endif %}
+        </fieldset>
+
+    </center>
+
+    <p class="important">
+
+    </p>
+{% endblock %}
+
+
+
+
+

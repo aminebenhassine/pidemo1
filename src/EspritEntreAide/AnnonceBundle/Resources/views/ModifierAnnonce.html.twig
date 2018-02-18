@@ -1,0 +1,72 @@
+{% extends ":default:test.html.twig" %}
+
+
+{% block title %}Club{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .important { color: #336699; }
+
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="big-div-club">
+        <h1>modifier un annonce</h1>
+    </div>
+    <center>
+        <fieldset>
+
+                <table>
+                    <tr>
+                        {{ form_start(form) }}
+
+                    <tr>
+                        <td>categorie:</td>
+                        <td>{{ form_widget(form.categorieA) }} </td>
+                    </tr>
+
+                    <tr>
+                        <td>titre :</td>
+                        <td>{{ form_widget(form.titreA) }} </td>
+                    </tr>
+
+                    <tr>
+                        <td>user :</td>
+                    </tr>
+
+                    <tr>
+                        <td>numero tel :</td>
+                        <td>{{ form_widget(form.numTel) }} </td>
+                    </tr>
+
+                    <tr>
+                        <td>description :</td>
+                        <td>{{ form_widget(form.descA) }} </td>
+                    </tr>
+
+
+
+
+                    <tr>
+                        <td>Valider votre Modification :</td>
+                        <td>{{ form_widget(form.ajouter) }} </td>
+                    </tr>
+
+
+                    {{ form_end(form) }}
+                    </tr>
+                </table>
+
+        </fieldset>
+
+    </center>
+
+    <p class="important">
+
+    </p>
+{% endblock %}
+
+
+
+
+

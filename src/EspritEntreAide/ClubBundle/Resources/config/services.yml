@@ -1,0 +1,4 @@
+services:
+#    club.example:
+#        class: EspritEntreAide\ClubBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

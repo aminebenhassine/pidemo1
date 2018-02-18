@@ -1,0 +1,60 @@
+
+
+
+{% extends ":default:test.html.twig" %}
+
+
+{% block title %}Annonce{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .important { color: #336699; }
+
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="big-div-club">
+        <div class="col-md-8 middlebarmenu">
+            <ul class="snip1189">
+                <li><a href="{{ path('_annonce_ajouter') }}">Ajouter une annonce</a></li>
+            </ul>
+        </div>
+    </div><br>
+    <!--<p class="important"></p>-->
+    <div class="reherche annonce">
+        <h3><a href="{{ path('_annonce_chercher') }}">Recherche des annonces</a></h3>
+        {{ form (form) }}
+        <h1>Liste des annonces</h1>
+
+        <table border="1">
+            <tr>
+                <th>id</th>
+                <th>categorie</th>
+                <th>titre</th>
+                <th>user</th>
+                <th>numero de telephone</th>
+                <th>Description</th>
+                <th>date de creation</th>
+
+            </tr>
+
+            {% for a in annonce %}
+                <tr>
+                    <td>{{ a.id}}</td>
+                    <td>{{ a.categorieA}}</td>
+                    <td>{{ a.titreA}}</td>
+                    <td>{{ a.idUser}}</td>
+                    <td>{{ a.numTel}}</td>
+                    <td>{{ a.descA}}</td>
+                    <td>{{ a.dateA|date}}</td>
+                    <td><a href="{{ path('_annonce_supprimer',{'id':a.id}) }}">Supprimer</a></td>
+                    <td><a href="{{ path('_annonce_modifier',{'id':a.id}) }}">Modifier</a></td>
+
+
+                </tr>
+            {% endfor %}
+        </table>
+        <span style="alignment: right"></span>
+    </div>
+
+{% endblock %}

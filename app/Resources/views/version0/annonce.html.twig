@@ -1,0 +1,20 @@
+{% extends ":default:test.html.twig" %}
+
+
+{% block title %}Annonce{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .important { color: #336699; }
+
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="big-div-club">
+        <h1>Liste des annonces</h1>
+    </div>
+    liste des annonces
+    <p class="important">
+
+    </p>
+{% endblock %}

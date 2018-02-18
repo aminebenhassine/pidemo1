@@ -1,0 +1,30 @@
+
+{% extends ":default:test.html.twig" %}
+
+
+{% block title %}Docs{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .important { color: #336699; }
+
+    </style>
+{% endblock %}
+{% block content %}
+    <table class="table">
+        <tr>
+            <th>id</th>
+            <th>nom</th>
+            <th>editer</th>
+            <th>supprimer</th>
+        </tr>
+        {% for store in stores %}
+            <tr>
+                <td>{{ store.id }}</td>
+                <td>{{ store.nomStore }}</td>
+                <td><a href="{{ path('store_edit',{'id':store.id}) }}">editer</a></td>
+                <td><a href="{{ path('store_remove',{'id':store.id}) }}">supprimer</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
