@@ -9,90 +9,93 @@
 
     </style>
 {% endblock %}
+
 {% block content %}
+    <body>
     <div class="big-div">
-        <h1>Liste des évènements à venir</h1>
+        <h1>Bienvenue dans l'interface de gestion des évenements </h1>
     </div>
-    <center>
-        <br>
-        <br>
-        <br>
+    <br>
 
 
-        <div class="row">
-            <div class="col-xs-12">
-                <h3 class="header smaller lighter blue">Evenements</h3>
-
-                <div class="clearfix">
-                    <div class="pull-right tableTools-container"></div>
-                </div>
-                <div class="table-header">
-                    Derniers évenements
-                </div>
-
-                <!-- div.table-responsive -->
-                <table class="table table table-striped table-bordered table-hover" id="editable-sample">
-                    <thead>
-                    <tr>
-                        <th> Image </th>
-                        <th> Titre </th>
-                        <th> Description </th>
-                        <th> Date </th>
-                        <th> Type </th>
-                        <th> Modifier </th>
-                        <th> Supprimer </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for evt in evts %}
-                        <tr>
-                            <td> <img src="{{ asset('uploads/images/' ~ evt.image) }}" height="100px" width="250px"> </td>
-                            <td>{{ evt.titreE }}</td>
-                            <td>{{ evt.descE }}</td>
-                            <td>{{ evt.dateE | date('d-m-y H:i') }}</td>
-                            <td>{{ evt.typeE }}</td>
-                            <td><a class="edit" href="javascript:;">Modifier</a></td>
-                            <td><a class="delete" href="javascript:;">Supprimer</a></td>
-
-                        </tr>
-                    {% endfor %}
-
-
-                    </tbody>
-                </table>
-                <!-- div.dataTables_borderWrap -->
+    <div class="gallery" id="gallery">
+        <div class="container">
+            <div class="about-head text-center ">
+                <h3>La galerie des évènements</h3>
             </div>
+            <a class="btn btn-primary" href="{{ path('_ajouter_events') }}">Ajouter un évènement</a>
+            <hr>
+            <a class="btn btn-primary" href="{{ path('evenement_homepage') }}"><i class="fas fa-th-large"></i></a>
+            <a class="btn btn-primary" href="{{ path('_afficher_events') }}"><i class="fas fa-list-ul"></i></a>
+            <hr>
+
+            <table class="table table table-striped table-bordered table-hover" id="editable-sample">
+                <thead>
+                <tr>
+                    <th> Id </th>
+                    <th> Image </th>
+                    <th> Titre </th>
+                    <th> Description </th>
+                    <th> Date </th>
+                    <th> Type </th>
+                    <th> Modifier </th>
+                    <th> Supprimer </th>
+                    <th> Participer </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for evt in evts %}
+                    <tr>
+                        <td> {{ evt.id }}</td>
+                        <td> <img src="{{ asset('uploads/images/' ~ evt.image) }}" height="100px" width="250px"> </td>
+                        <td>{{ evt.titreE }}</td>
+                        <td>{{ evt.descE }}</td>
+                        <td>{{ evt.dateE | date('d-m-y H:i') }}</td>
+                        <td>{{ evt.typeE }}</td>
+                        <td><a class="edit" href="javascript:;">Modifier</a></td>
+                        <td><a class="delete" href="javascript:;">Supprimer</a></td>
+                        <td><a  href="{{ path('_participer_events', {'id': evt.id }) }}"> Participer </a></td>
+                    </tr>
+                {% endfor %}
+
+
+                </tbody>
+            </table>
+            <script src="{{ asset('js/lightbox-plus-jquery.min.js') }}"></script>
         </div>
+    </div>
 
 
 
 
-        <span style="alignment: right"></span>
-        <script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
-        <script src="{{ asset('js/jquery-ui-1.9.2.custom.min.js') }}"></script>
-        <script src="{{ asset('js/jquery-migrate-1.2.1.min.js') }}"></script>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link  href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style-table.css') }}" rel="stylesheet">
 
-        <!--data table-->
-        <script type="text/javascript" src="{{ asset('js/data-tables/jquery.dataTables.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('js/data-tables/DT_bootstrap.js') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 
-        <!--script for editable table-->
-        <script src="{{ asset('js/editable-table.js') }}"></script>
-        <script>
-            jQuery(document).ready(function() {
-                EditableTable.init();
-            });
-        </script>
-        <link rel="stylesheet" href="{{ asset('js/data-tables/DT_bootstrap.css') }}" />
-        <link rel="stylesheet" href="{{ asset('css/style-table.css') }}" />
-        <br>
-        <br>
-        <br>
 
-    </center>
-    <p class="important">
+    <script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
-    </p>
+    <script src="{{ asset('js/jquery-ui-1.9.2.custom.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-migrate-1.2.1.min.js') }}"></script>
+
+    <!--data table-->
+    <script type="text/javascript" src="{{ asset('js/data-tables/jquery.dataTables.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/data-tables/DT_bootstrap.js') }}"></script>
+
+    <!--script for editable table-->
+    <script src="{{ asset('js/editable-table.js') }}"></script>
+    <script>
+        jQuery(document).ready(function() {
+            EditableTable.init();
+        });
+    </script>
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+    </a>
+</body>
 {% endblock %}

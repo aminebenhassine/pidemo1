@@ -6,25 +6,106 @@
     {{ parent() }}
     <style type="text/css">
         .important { color: #336699; }
+        #espritentreaide_evenementbundle_evenement_titreE,#espritentreaide_evenementbundle_evenement_descE{
+            width: 50%;
+            padding: 6px 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
 
+        #espritentreaide_evenementbundle_evenement_dateE_date_month{
+            padding: 6px 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        #espritentreaide_evenementbundle_evenement_dateE_date_day
+        {
+            padding: 6px 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        #espritentreaide_evenementbundle_evenement_dateE_date_year
+        {
+            padding: 6px 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        #espritentreaide_evenementbundle_evenement_dateE_time_hour
+        {
+            padding: 6px 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+
+        #espritentreaide_evenementbundle_evenement_dateE_time_minute
+        {
+            padding: 6px 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        #espritentreaide_evenementbundle_evenement_typeE
+        {
+            padding: 6px 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        #espritentreaide_evenementbundle_evenement_image,#espritentreaide_evenementbundle_evenement_Ajouter{
+            background-color: #43ACCE; /* Green */
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+
+        }
     </style>
 {% endblock %}
+
 {% block content %}
+    <body>
     <div class="big-div">
-        <h1>Ajouter un évènement</h1>
+        <h1>Bienvenue dans l'interface de gestion des évenements </h1>
     </div>
-    <div>
-        <center>
+    <br>
+
+
+    <div class="gallery" id="gallery">
+        <div class="container">
+            <div class="about-head text-center ">
+                <h3>La galerie des évènements</h3>
+            </div>
             {% if is_granted('ROLE_RESPONSABLE_SUPER_ADMIN')
             or is_granted('ROLE_ADMIN')
             or is_granted('ROLE_RESPONSABLE_CLUB')
             or is_granted('ROLE_SUPER_ADMIN')
-             %}
+            %}
                 {{ form_start(form) }}
-                <table class="table">
+                <table class="table table-hover">
                     <tr>
                         <th> Titre </th>
-                        <td>{{ form_widget(form.titreE) }}</td>
+                        <td> {{ form_widget(form.titreE) }}</td>
                     </tr>
                     <tr>
                         <th> Description </th>
@@ -45,6 +126,10 @@
                     <tr>
                         <th> Image JPEG </th>
                         <td>{{ form_row(form.image) }}</td>
+                    </tr>
+                    <tr>
+                        <th>Captcha</th>
+                        <td><div class="col-sm-3">{{ form_row(form.captcha) }}</div></td>
                     </tr>
                 </table>
                 {{ form_end(form) }}
@@ -73,17 +158,57 @@
                         <th> Image JPEG </th>
                         <td>{{ form_row(form.image) }}</td>
                     </tr>
+                    <tr>
+                        {{ ivory_google_map(map) }}
+                        {{ ivory_google_api([map]) }}
+
+                    </tr>
+                    <tr>
+                        <th>Captcha</th>
+                        <td><div class="col-sm-3">{{ form_row(form.captcha) }}</div></td>
+                    </tr>
                 </table>
                 {{ form_end(form) }}
 
-                {% else %}
+            {% else %}
                 <br>
                 <b style="color: #dd4444">Vous ne pouvez pas ajouter d'evenements, merci de contacter votre administrateur systeme ou de s'inscrire</b>
             {% endif %}
-        </center>
+            <script src="{{ asset('js/lightbox-plus-jquery.min.js') }}"></script>
+        </div>
     </div>
 
-    <p class="important">
 
-    </p>
+
+
+
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link  href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style-table.css') }}" rel="stylesheet">
+
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+
+    <script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <script src="{{ asset('js/jquery-ui-1.9.2.custom.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-migrate-1.2.1.min.js') }}"></script>
+
+    <!--data table-->
+    <script type="text/javascript" src="{{ asset('js/data-tables/jquery.dataTables.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/data-tables/DT_bootstrap.js') }}"></script>
+
+    <!--script for editable table-->
+    <script src="{{ asset('js/editable-table.js') }}"></script>
+    <script>
+        jQuery(document).ready(function() {
+            EditableTable.init();
+        });
+    </script>
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+    </a>
+    </body>
 {% endblock %}

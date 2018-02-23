@@ -1,7 +1,7 @@
 
 {% include "admin/partial/top-header.html.twig" %}
 
-<div class="main-container ace-save-state" id="main-container">
+<div class="main-container ace-save-state" id="main-container" xmlns="http://www.w3.org/1999/html">
     <script type="text/javascript">
         try{ace.settings.loadState('main-container')}catch(e){}
     </script>
@@ -82,17 +82,17 @@
                     </div><!-- /.ace-settings-box -->
                 </div><!-- /.ace-settings-container -->
                 <div class="page-header">          <!--*********************************************************************-->
-                    <h1>
-                        liste Evenement
+                    <h2>
+                      Evenement
 
-                    </h1>
+                    </h2>
                 </div><!-- /.page-header -->
                 <fieldset>
 
 
 
 
-                    {% block title %}Evenement{% endblock %}
+
                     {% block head %}
                         <style type="text/css">
                             .important { color: #336699; }
@@ -108,8 +108,7 @@
                             </div>
                         </div><br>
                         <!--<p class="important"></p>-->
-                        <div class="reherche annonce">
-                            <h3><a href="{{ path('_annonce_chercher') }}">Recherche des annonces</a></h3>
+
 
 
                             <div class="row">
@@ -119,6 +118,9 @@
                                     <div class="clearfix">
                                         <div class="pull-right tableTools-container"></div>
                                     </div>
+                                    <a class="btn btn-primary" href="{{ path('_admin_ajouter_events') }}">Ajouter un évènement</a>
+                                    <a class="btn btn-primary" href="{{ path('admin_traiter_demande_events') }}">Traiter les propositions</a>
+                                    <hr>
                                     <div class="table-header">
                                         Derniers évenements
                                     </div>
@@ -127,6 +129,7 @@
                                     <table class="table table table-striped table-bordered table-hover" id="editable-sample">
                                         <thead>
                                         <tr>
+                                            <th> id </th>
                                             <th> Image </th>
                                             <th> Titre </th>
                                             <th> Description </th>
@@ -139,7 +142,11 @@
                                         <tbody>
                                         {% for evt in evts %}
                                             <tr>
-                                                <td> <img src="{{ asset('uploads/images/' ~ evt.image) }}" height="100px" width="250px"> </td>
+                                                <td> {{ evt.id }} </td>
+                                                <td> <img src="{{ asset('uploads/images/' ~ evt.image) }}" height="100px" width="250px"><br>
+                                                    <a  href="{{ path('_admin_modif_img_events',{'id':evt.id }) }}" class="btn">Modifier l'image</a>
+
+                                                </td>
                                                 <td>{{ evt.titreE }}</td>
                                                 <td>{{ evt.descE }}</td>
                                                 <td>{{ evt.dateE | date('d-m-y H:i') }}</td>
@@ -148,7 +155,10 @@
                                                 <td><a class="delete" href="javascript:;">Supprimer</a></td>
 
                                             </tr>
+
+
                                         {% endfor %}
+
 
 
                                         </tbody>
@@ -161,12 +171,12 @@
 
 
                             <span style="alignment: right"></span>
-                        </div>
+
 
                     {% endblock %}
 
 
-                </fieldset>
+        </fieldset>
                 <!--*********************************************************************-->
 
             </div>

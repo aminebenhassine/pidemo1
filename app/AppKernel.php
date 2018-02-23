@@ -25,6 +25,10 @@ class AppKernel extends Kernel
             new EspritEntreAide\StoreBundle\StoreBundle(),
             new EspritEntreAide\SpottedBundle\SpottedBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
+            new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
+            new Ivory\SerializerBundle\IvorySerializerBundle(),
+            new Http\HttplugBundle\HttplugBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

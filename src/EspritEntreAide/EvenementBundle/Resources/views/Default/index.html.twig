@@ -21,6 +21,13 @@
             <div class="about-head text-center ">
                 <h3>La galerie des évènements</h3>
             </div>
+            <a class="btn btn-primary" href="{{ path('_ajouter_events') }}">Ajouter un évènement</a>
+            <hr>
+            <a class="btn btn-primary" href="{{ path('evenement_homepage') }}"><i class="fas fa-th-large"></i></a>
+            <a class="btn btn-primary" href="{{ path('_afficher_events') }}"><i class="fas fa-list-ul"></i></a>
+            <hr>
+
+
             <div class="gallery-info">
                 {% for evt in evts %}
                 <div class="col-md-3 gallery-grids">
@@ -39,29 +46,7 @@
 
 
 
+   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
 
-
-    <center>
-
-
-
-
-
-        <h1>Que voulez-vous faire?</h1><br>
-        <a href={{ path('_ajouter_events')}} > Ajouter un évenement </a><br><br>
-        <a href={{ path('_afficher_events')}} > Afficher les évenements disponibles </a><br><br>
-        <a href={{ path('_afficher_tri_events')}} > Afficher les évenements disponibles triés par date </a><br><br>
-        <a href={{ path('_rechercher_events_nom')}} > Rechercher un évenement par nom </a><br><br>
-        <a href={{ path('_rechercher_events_date')}} > Rechercher un évenement par date </a><br><br>
-        <a href={{ path('_rechercher_events_club')}} > Rechercher un évenement par club </a><br><br>
-        {% if is_granted('ROLE_RESPONSABLE_SUPER_ADMIN')
-        or is_granted('ROLE_ADMIN')
-        or is_granted('ROLE_SUPER_ADMIN') %}
-            <a href={{ path('_traiter_prop_events')}} > Traiter les propositions d'évenement </a><br><br>
-        {% endif %}
-    </center>
-    <p class="important">
-
-    </p>
 {% endblock %}

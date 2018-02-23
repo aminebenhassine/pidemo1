@@ -18,22 +18,33 @@ var EditableTable = function () {
             function editRow(oTable, nRow) {
                 var aData = oTable.fnGetData(nRow);
                 var jqTds = $('>td', nRow);
-                jqTds[0].innerHTML = '<input type="text" class="form-control small" value="' + aData[0] + '">';
-                jqTds[1].innerHTML = '<input type="text" class="form-control small" value="' + aData[1] + '">';
+
                 jqTds[2].innerHTML = '<input type="text" class="form-control small" value="' + aData[2] + '">';
                 jqTds[3].innerHTML = '<input type="text" class="form-control small" value="' + aData[3] + '">';
-                jqTds[4].innerHTML = '<a class="edit" href="">Save</a>';
-                jqTds[5].innerHTML = '<a class="cancel" href="">Cancel</a>';
+                jqTds[4].innerHTML = '<input type="datetime" class="form-control small" value="' + aData[4] + '">';
+                jqTds[5].innerHTML = '<select>' +
+                    '<option value="Seminaire">Seminaire</option>'+
+                    '<option value="Workshop">Workshop</option>'+
+                    '<option value="Culturel">Culturel</option>'+
+                    '<option value="Gaming">Gaming</option>'+
+                    '<option value="Coding">Coding</option>'+
+                    '<option value="Sportif">Sportif</option>'+
+                    '<option value="Autre">Autre</option>'+
+                '</select>';
+                jqTds[6].innerHTML = '<a class="edit" href="">Enregistrer</a>';
+                jqTds[7].innerHTML = '<a class="cancel" href="">Annuler</a>';
             }
 
             function saveRow(oTable, nRow) {
                 var jqInputs = $('input', nRow);
-                oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
-                oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
-                oTable.fnUpdate(jqInputs[2].value, nRow, 2, false);
-                oTable.fnUpdate(jqInputs[3].value, nRow, 3, false);
-                oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 4, false);
-                oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 5, false);
+                var jqInputs2= $('select', nRow);
+
+                oTable.fnUpdate(jqInputs[0].value, nRow, 2, false);
+                oTable.fnUpdate(jqInputs[1].value, nRow, 3, false);
+                oTable.fnUpdate(jqInputs[2].value, nRow, 4, false);
+                oTable.fnUpdate(jqInputs2[0].value, nRow, 5, false);
+                oTable.fnUpdate('<a class="edit" href="">Modifier</a>', nRow, 6, false);
+                oTable.fnUpdate('<a class="delete" href="">Supprimer</a>', nRow, 7, false);
                 oTable.fnDraw();
             }
 
@@ -43,7 +54,8 @@ var EditableTable = function () {
                 oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
                 oTable.fnUpdate(jqInputs[2].value, nRow, 2, false);
                 oTable.fnUpdate(jqInputs[3].value, nRow, 3, false);
-                oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 4, false);
+                oTable.fnUpdate(jqInputs[4].value, nRow, 4, false);
+                oTable.fnUpdate('<a class="edit" href="">Modifier</a>', nRow, 5, false);
                 oTable.fnDraw();
             }
 
@@ -88,13 +100,24 @@ var EditableTable = function () {
             $('#editable-sample a.delete').live('click', function (e) {
                 e.preventDefault();
 
-                if (confirm("Are you sure to delete this row ?") == false) {
+                if (confirm("Etes-vous sûr de supprimer cet evenement ?") == false) {
                     return;
                 }
 
                 var nRow = $(this).parents('tr')[0];
+                var aData = oTable.fnGetData(nRow);
+                var state=$('#methState').val();
+                var formData = {
+                    id: aData[0],
+                    meth:state
+                };
+                $.ajax({
+                    url: Routing.generate('admin_supprimer_events'),
+                    type: 'post',
+                    data: formData
+                });
                 oTable.fnDeleteRow(nRow);
-                alert("Deleted! Do not forget to do some ajax to sync with backend :)");
+                alert("Evenement supprimé avec succes");
             });
 
             $('#editable-sample a.cancel').live('click', function (e) {
@@ -119,11 +142,27 @@ var EditableTable = function () {
                     restoreRow(oTable, nEditing);
                     editRow(oTable, nRow);
                     nEditing = nRow;
-                } else if (nEditing == nRow && this.innerHTML == "Save") {
+                } else if (nEditing == nRow && this.innerHTML == "Enregistrer") {
                     /* Editing this row and want to save it */
                     saveRow(oTable, nEditing);
                     nEditing = null;
-                    alert("Updated! Do not forget to do some ajax to sync with backend :)");
+                    var aData = oTable.fnGetData(nRow);
+                    var state = $('#methState').val();
+                    var formData = {
+                        id: aData[0],
+                        titre: aData[2],
+                        description: aData[3],
+                        date: aData[4],
+                        type: aData[5],
+                        meth:state
+                    };
+                    $.ajax({
+                        url: Routing.generate('admin_modifier_events'),
+                        type:'post',
+                        data: formData
+                    });
+                    alert(JSON.stringify(formData));
+                    alert("Evenement modifié avec succes");
                 } else {
                     /* No edit in progress - let's start one */
                     editRow(oTable, nRow);

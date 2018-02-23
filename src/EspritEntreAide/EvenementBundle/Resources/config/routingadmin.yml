@@ -2,14 +2,33 @@ _admin_ajouter_events:
     path:     /adminajoutevent
     defaults: { _controller: EvenementBundle:Evenement:adminAjout }
 
-_admin_modifier_events:
+admin_modifier_events:
     path:     /adminmodifierevent
     defaults: { _controller: EvenementBundle:Evenement:adminModifier }
+    methods: [POST]
+    options:
+            expose: true
 
-_admin_supprimer_events:
+admin_supprimer_events:
     path:     /adminsupprimerevent
     defaults: { _controller: EvenementBundle:Evenement:adminSupprimer }
+    methods: [POST]
+    options:
+            expose: true
 
 _admin_afficher_events:
     path:     /adminafficherevents
     defaults: { _controller: EvenementBundle:Evenement:adminAfficher }
+
+_admin_modif_img_events:
+    path:     /adminmodifimgevents
+    defaults: { _controller: EvenementBundle:Evenement:adminModifierImgEvent }
+admin_traiter_demande_events:
+    path:     /admintraiterdemandesevents
+    defaults: { _controller: EvenementBundle:Evenement:traiterPropositionsEvt }
+admin_accepter_demande_event:
+    path:     /adminaccepterevents
+    defaults: { _controller: EvenementBundle:Evenement:accepterPropositionsEvt }
+admin_refuser_demande_event:
+    path:     /adminrefuserevents
+    defaults: { _controller: EvenementBundle:Evenement:refuserPropositionsEvt }

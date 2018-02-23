@@ -77,7 +77,25 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 
+gregwar_captcha: ~
 
+ivory_google_map:
+    map:
+        debug: "%kernel.debug%"
+        language: "%locale%"
+        api_key: "AIzaSyC8-bISO2rUJpsF_le8jEKKtrNctCGZgUQ"
+    geocoder:
+        client: httplug.client.default
+        message_factory: httplug.message_factory.default
+        api_key: "AIzaSyC8-bISO2rUJpsF_le8jEKKtrNctCGZgUQ"
+
+httplug:
+    classes:
+        client: Http\Adapter\Guzzle6\Client
+        message_factory: Http\Message\MessageFactory\GuzzleMessageFactory
+    clients:
+        acme:
+            factory: httplug.factory.guzzle6
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'

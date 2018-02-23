@@ -2,6 +2,7 @@
 
 namespace EspritEntreAide\EvenementBundle\Form;
 
+use Gregwar\CaptchaBundle\Type\CaptchaType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -10,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class Evenement2Type extends AbstractType
 {
@@ -32,6 +34,7 @@ class Evenement2Type extends AbstractType
                     'Autre'=> 'Autre'
                 )))
             ->add('image', FileType::class, array('label' => 'Image(JPG)'))
+            ->add('captcha', CaptchaType::class)
             ->add('Ajouter', SubmitType::class);
     }
     /**

@@ -106,6 +106,10 @@ class Evenement
 
 
 
+
+
+
+
     /**
      * @ORM\ManyToOne(targetEntity="EspritEntreAide\ClubBundle\Entity\Club", inversedBy="evenements")
      * @ORM\JoinColumn(name="id_club",referencedColumnName="id")
@@ -161,6 +165,61 @@ class Evenement
     {
         $this->etat = $etat;
     }
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="latitude", type="float", nullable=true)
+     */
+    private $latitude;
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="longitude", type="float", nullable=true)
+     */
+    private $longitude;
+
+    /**
+     * @return float
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * @param float $latitude
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+    }
+
+    /**
+     * @return float
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * @param float $longitude
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+    }
+
+
+
+
+
+
+
+
+
+
 
     /**
      * @var \DateTime
