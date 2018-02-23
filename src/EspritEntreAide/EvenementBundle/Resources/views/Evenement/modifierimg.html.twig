@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "admin/partial/top-header.html.twig" %}
+
+    {% include "admin/partial/header.html.twig" %}
+</head>
+
+<body class="no-skin">
+
+
+<div class="main-container ace-save-state" id="main-container">
+    <script type="text/javascript">
+        try{ace.settings.loadState('main-container')}catch(e){}
+    </script>
+
+    {% include "admin/partial/sidebar.html.twig" %}
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            {% include "admin/partial/breadcrumbs.html.twig" %}
+
+
+
+            <div class="page-content">
+                <div class="ace-settings-container" id="ace-settings-container">
+                    <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+                        <i class="ace-icon fa fa-cog bigger-130"></i>
+                    </div>
+
+                    <div class="ace-settings-box clearfix" id="ace-settings-box">
+                        <div class="pull-left width-50">
+                            <div class="ace-settings-item">
+                                <div class="pull-left">
+                                    <select id="skin-colorpicker" class="hide">
+                                        <option data-skin="no-skin" value="#438EB9">#438EB9</option>
+                                        <option data-skin="skin-1" value="#222A2D">#222A2D</option>
+                                        <option data-skin="skin-2" value="#C6487E">#C6487E</option>
+                                        <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
+                                    </select>
+                                </div>
+                                <span>&nbsp; Choose Skin</span>
+                            </div>
+
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-navbar" autocomplete="off" />
+                                <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
+                            </div>
+
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-sidebar" autocomplete="off" />
+                                <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
+                            </div>
+
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-breadcrumbs" autocomplete="off" />
+                                <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
+                            </div>
+
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" autocomplete="off" />
+                                <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
+                            </div>
+
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-add-container" autocomplete="off" />
+                                <label class="lbl" for="ace-settings-add-container">
+                                    Inside
+                                    <b>.container</b>
+                                </label>
+                            </div>
+                        </div><!-- /.pull-left -->
+
+                        <div class="pull-left width-50">
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" autocomplete="off" />
+                                <label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
+                            </div>
+
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact" autocomplete="off" />
+                                <label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
+                            </div>
+
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" autocomplete="off" />
+                                <label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
+                            </div>
+                        </div><!-- /.pull-left -->
+                    </div><!-- /.ace-settings-box -->
+                </div><!-- /.ace-settings-container -->
+                <div class="page-header">          <!--*********************************************************************-->
+                    <h1>
+                        liste Evenement
+
+                    </h1>
+                </div><!-- /.page-header -->
+                <fieldset>
+
+
+
+
+                    {% block title %}Evenement{% endblock %}
+                    {% block head %}
+                        <style type="text/css">
+                            .important { color: #336699; }
+
+                        </style>
+                    {% endblock %}
+                    {% block content %}
+                    <div class="big-div-club">
+                        <div class="col-md-8 middlebarmenu">
+                            <ul class="snip1189">
+
+                            </ul>
+                        </div>
+                    </div><br>
+                    <!--<p class="important"></p>-->
+
+
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h3 class="header smaller lighter blue">Evenements</h3>
+
+                            <div class="clearfix">
+                                <div class="pull-right tableTools-container"></div>
+                            </div>
+                            <div class="table-header">
+                                Modifier l'image de l'évènement
+                            </div>
+
+
+                            <div><img src="{{ asset('uploads/images/' ~ evt.image) }}"><br></div>
+                            <div>
+
+                                {{ form_start(form) }}
+
+                                <tr>
+
+                                    <td>{{ form_row(form.image) }}</td>
+                                </tr>
+
+                                {{ form_end(form) }}
+                            </div>
+
+
+                            <!-- div.dataTables_borderWrap -->
+                        </div>
+                    </div>
+
+
+
+
+                    <span style="alignment: right"></span>
+
+
+            {% endblock %}
+
+
+            </fieldset>
+            <!--*********************************************************************-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% include "admin/partial/footer.html.twig" %}
+
+
+
+
+
+<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+    <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+</a>
+<!-- /.main-container -->
+
+
+<script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+
+<script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+<script src="{{ asset('js/jquery-ui-1.9.2.custom.min.js') }}"></script>
+<script src="{{ asset('js/jquery-migrate-1.2.1.min.js') }}"></script>
+
+<!--data table-->
+<script type="text/javascript" src="{{ asset('js/data-tables/jquery.dataTables.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/data-tables/DT_bootstrap.js') }}"></script>
+
+<!--script for editable table-->
+<script src="{{ asset('js/editable-table.js') }}"></script>
+<script>
+    jQuery(document).ready(function() {
+        EditableTable.init();
+    });
+</script>
+</body>
+</html>
+
