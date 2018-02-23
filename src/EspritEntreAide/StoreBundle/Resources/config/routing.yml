@@ -1,26 +1,49 @@
 store_homepage:
     path:     /storeIndex
-    defaults: { _controller: StoreBundle:Default:index }
+    defaults: { _controller: StoreBundle:GererStore:index }
 store_ajout:
     path:     /ajoutstore
-    defaults: { _controller: StoreBundle:Default:AjoutStore }
+    defaults: { _controller: StoreBundle:GererStore:AjoutStore }
 store_edit:
     path:     /{id}/storeEdit
-    defaults: { _controller: StoreBundle:Default:edit }
+    defaults: { _controller: StoreBundle:GererStore:edit }
 store_remove:
     path:     /{id}/storeRemove
-    defaults: { _controller: StoreBundle:Default:remove }
+    defaults: { _controller: StoreBundle:GererStore:remove }
+store_search:
+    path:     /search
+    defaults: { _controller: StoreBundle:GererStore:search }
 
 
 demande_index:
-    path:     /demandeIndex
+    path:     /demandeAdmin
     defaults: { _controller: StoreBundle:Demande:index }
+demande_index_store:
+    path:     /demandeStore
+    defaults: { _controller: StoreBundle:Demande:indexStore }
+demande_index_teacher:
+    path:     /demandeTeacher
+    defaults: { _controller: StoreBundle:Demande:indexTeacher }
 demande_new:
     path:     /demandeNew
     defaults: { _controller: StoreBundle:Demande:new }
 demande_remove:
     path:     /{id}/demandeRemove
     defaults: { _controller: StoreBundle:Demande:remove }
-
+demande_search_admin:
+    path:     /adminSearch
+    defaults: { _controller: StoreBundle:Demande:adminSearch }
+demande_search_teacher:
+    path:     /teacherSearch
+    defaults: { _controller: StoreBundle:Demande:teacherSearch }
+demande_search_store:
+    path:     /storeSearch
+    defaults: { _controller: StoreBundle:Demande:storeSearch }
+demande_etat:
+    path:     /{id}/changeEtat
+    defaults: { _controller: StoreBundle:Demande:changeEtat }
+demande_detail:
+    path:     /{id}/detailDemande
+    defaults: { _controller: StoreBundle:Demande:detail }
 
 

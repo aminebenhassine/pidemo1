@@ -11,8 +11,8 @@
 {% endblock %}
 {% block content %}
 <h1>liste des demandes</h1>
-    <a href="{{ path('demande_new') }}" class="btn btn-primary btn-sm">Ajouter demande</a><br>
-    <input type="text" placeholder="enseignant" id="teacher">
+    <a href="{{ path('demande_new') }}" class="btn btn-primary btn-sm">Ajouter demande</a>
+    <br>
     <input type="text" placeholder="store" id="store">
     <input type="text" placeholder="date d'ajout" id="date">
     <input type="button" value="chercher" onclick="search()">
@@ -23,6 +23,7 @@
         <th>date d'ajout de la demande</th>
         <th>store</th>
         <th>enseignant</th>
+        <th>etat</th>
         <th>supprimer</th>
     </tr>
     <tbody id="table">
@@ -33,6 +34,13 @@
             <td>{{ demande.dateCreation|date('Y-m-d') }}</td>
             <td>{{ demande.idStore.nomStore }}</td>
             <td>{{ demande.idUser.username }}</td>
+            <td>
+                {% if demande.etatDemande=="" %}
+                    En attente
+                {% else  %}
+                    {{ demande.etatDemande }}
+                {% endif %}
+            </td>
             <td><a href="{{ path('demande_remove',{'id':demande.id}) }}">supprimer</a></td>
         </tr>
     {% endfor %}
@@ -47,7 +55,7 @@
             $.ajax({
                 url: "{{ path('demande_search_admin') }}",
                 method: "POST",
-                data: "date="+ $("#date").val()+"&store="+$("#store").val()+"&teacher="+$("#teacher").val(),
+                data: "date="+ $("#date").val()+"&store="+$("#store").val(),
                 success: function (data) {
                     $("#table").html("");
                     $.each(data,function (index,element) {

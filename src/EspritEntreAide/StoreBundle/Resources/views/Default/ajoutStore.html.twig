@@ -1,7 +1,7 @@
 {% extends ":default:test.html.twig" %}
 
 
-{% block title %}Liste des demandes{% endblock %}
+{% block title %}Ajout Store{% endblock %}
 {% block head %}
     {{ parent() }}
     <style type="text/css">
@@ -10,11 +10,20 @@
     </style>
 {% endblock %}
 {% block content %}
-    <table class="table">
+
 <h1>Ajout d'un nouveau store</h1>
+    <table class="table">
     {{ form_start(form) }}
     <tr>
-
+        <th><label for="">Nom du Store</label></th>
+        <td>{{ form_widget(form.nomStore) }}<br></td>
+    </tr>
+        <tr>
+            <th><label for="">Responsable du Store</label></th>
+            <td>{{ form_widget(form.user) }}<br></td>
+        </tr>
+    </table>
 {{ form_end(form) }}
-    <table class="table">
+
+
 {% endblock %}

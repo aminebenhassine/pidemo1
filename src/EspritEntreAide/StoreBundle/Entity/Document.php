@@ -131,8 +131,8 @@ class Document
     }
 
     /**
-     * @ORM\PostPersist()
-     * @ORM\PostUpdate()
+     * @ORM\postPersist()
+     * @ORM\postUpdate()
      */
     public function uploadfileFile()
     {
