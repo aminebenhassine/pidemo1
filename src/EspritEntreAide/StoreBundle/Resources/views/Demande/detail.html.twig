@@ -1,0 +1,32 @@
+{% extends ":default:test.html.twig" %}
+{% block title %}Detail Demande{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .important { color: #336699; }
+
+    </style>
+{% endblock %}
+{% block content %}
+    <table class="table">
+        <tr>
+            <th>id</th>
+            <th>nombre copies</th>
+            <th>date d'ajout de la demande</th>
+            <th>store</th>
+            <th>enseignant</th>
+        </tr>
+        <tbody id="table">
+            <tr>
+                <td>{{ demande.id }}</td>
+                <td>{{ demande.nbrCopie }}</td>
+                <td>{{ demande.dateCreation|date('Y-m-d') }}</td>
+                <td>{{ demande.idStore.nomStore }}</td>
+                <td>{{ demande.idUser.username }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+{% endblock %}

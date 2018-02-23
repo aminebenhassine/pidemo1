@@ -2,7 +2,7 @@
 {% extends ":default:test.html.twig" %}
 
 
-{% block title %}Docs{% endblock %}
+{% block title %}Stores{% endblock %}
 {% block head %}
     {{ parent() }}
     <style type="text/css">
@@ -11,6 +11,11 @@
     </style>
 {% endblock %}
 {% block content %}
+
+        <input type="text" id="storeName" placeholder="nom de store" name="storeName">
+        <input type="text" id="storeManager" placeholder="responsable de store" name="storeManager">
+        <input type="button" id="submit" onclick="search()" value="chercher">
+
     <table class="table">
         <tr>
             <th>id</th>
@@ -18,13 +23,45 @@
             <th>editer</th>
             <th>supprimer</th>
         </tr>
-        {% for store in stores %}
-            <tr>
+        <tbody id="table">
+            {% for store in stores %}
+                <tr>
                 <td>{{ store.id }}</td>
                 <td>{{ store.nomStore }}</td>
                 <td><a href="{{ path('store_edit',{'id':store.id}) }}">editer</a></td>
                 <td><a href="{{ path('store_remove',{'id':store.id}) }}">supprimer</a></td>
             </tr>
-        {% endfor %}
+            {% endfor %}
+        </tbody>
+
     </table>
+
 {% endblock %}
+
+{% block script %}
+{{ parent() }}
+    <script>
+        function search() {
+            $.ajax({
+                url: "{{ path('store_search') }}",
+                data: "storeName="+$("#storeName").val()+"&storeManager="+$("#storeManager").val() ,
+                method: "POST",
+                success: function (data) {
+                    $("#table").html("")
+                    $.each(data,function (index,element) {
+                        $("#table").append(`
+                        <tr>
+                        <td>`+element.id+`</td>
+                        <td>`+element.nomStore+`</td>
+                        <td>editer</td>
+                        <td>supprimer</td>
+</tr>
+                        `);
+                    })
+                }
+            });
+        }
+
+
+    </script>
+{% endblock script %}
