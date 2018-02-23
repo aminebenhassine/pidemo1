@@ -198,14 +198,13 @@ class EvenementController extends Controller
         if ($request->isXmlHttpRequest())
         {
             $id=$request->get('id');
-           // $image=$request->get('image');
             $titre=$request->get('titre');
             $description=$request->get('description');
             $date=$request->get('date');
             $type=$request->get('type');
             $em=$this->getDoctrine()->getManager();
             $evts=$em->getRepository('EvenementBundle:Evenement')->find($id);
-           // $evts->setImage($image);
+
             $evts->setTitreE($titre);
             $evts->setDescE($description);
             $evts->setDateE(new \DateTime($date));
